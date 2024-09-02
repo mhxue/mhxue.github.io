@@ -58,7 +58,7 @@ brew services start jenkins-lts
     <span class="n">parameters</span> <span class="o">{</span>
         <span class="n">string</span> <span class="nl">name:</span> <span class="s1">'name'</span><span class="o">,</span> <span class="nl">defaultValue:</span> <span class="s1">'World'</span>
     <span class="o">}</span>
-    
+
     <span class="n">stages</span> <span class="o">{</span>
         <span class="n">stage</span><span class="o">(</span><span class="s1">'Hello'</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">steps</span> <span class="o">{</span>
@@ -66,7 +66,7 @@ brew services start jenkins-lts
             <span class="o">}</span>
         <span class="o">}</span>
     <span class="o">}</span>
-    
+
      <span class="n">post</span> <span class="o">{</span>
           <span class="n">always</span> <span class="o">{</span>
             <span class="n">echo</span> <span class="s2">"Done"</span>
@@ -148,32 +148,32 @@ stage('fetch @ master') {
     <span class="n">parameters</span> <span class="o">{</span>
         <span class="n">string</span> <span class="nl">name:</span> <span class="s1">'name'</span><span class="o">,</span> <span class="nl">defaultValue:</span> <span class="s1">'World'</span>
     <span class="o">}</span>
-    
+
     <span class="n">stages</span> <span class="o">{</span>
         <span class="n">stage</span><span class="o">(</span><span class="s1">'Hello'</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">steps</span> <span class="o">{</span>
 								<span class="n">script</span> <span class="o">{</span>
-									
+
 								<span class="o">}</span>
                  <span class="n">echo</span> <span class="s2">"Hello ${params.name}"</span>
             <span class="o">}</span>
         <span class="o">}</span>
     <span class="o">}</span>
-    
+
      <span class="n">post</span> <span class="o">{</span>
           <span class="n">always</span> <span class="o">{</span>
             <span class="n">echo</span> <span class="s2">"Done"</span>
           <span class="o">}</span>
      <span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div></div> <p>Declarative pipeline展现出不同层次的特性</p> <ul> <li> <p>DSL特性</p> <p>Declarative pipeline是一个特定领域语言。对一些写法有特殊的要求，比如在stage中必需要有且只有一个steps；所有的step必须被一个steps包裹等。</p> <p><a href="https://www.jenkins.io/doc/book/pipeline/syntax/" rel="external nofollow noopener" target="_blank">Pipeline DSL Syntax</a></p> </li> <li> <p>Groovy特性</p> <p>Declarative pipeline也表现出Groovy特性，即普通的Groovy代码在这里是可以直接运行的。但是这里会有Jenkins沙盒限制</p> </li> <li> <p>Jenkins特性</p> <p>Jenkins插件引入的API，在这里都可以直接使用。</p> </li> </ul> <h3 id="scripted-pipeline">Scripted pipeline</h3> <div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">node</span><span class="o">(</span><span class="s1">'master'</span><span class="o">)</span> <span class="o">{</span>
+</code></pre></div></div> <p>Declarative pipeline展现出不同层次的特性</p> <ul> <li>DSL特性</li> </ul> <p>Declarative pipeline是一个特定领域语言。对一些写法有特殊的要求，比如在stage中必需要有且只有一个steps；所有的step必须被一个steps包裹等。</p> <p><a href="https://www.jenkins.io/doc/book/pipeline/syntax/" rel="external nofollow noopener" target="_blank">Pipeline DSL Syntax</a></p> <ul> <li>Groovy特性</li> </ul> <p>Declarative pipeline也表现出Groovy特性，即普通的Groovy代码在这里是可以直接运行的。但是这里会有Jenkins沙盒限制</p> <ul> <li>Jenkins特性</li> </ul> <p>Jenkins插件引入的API，在这里都可以直接使用。</p> <h3 id="scripted-pipeline">Scripted pipeline</h3> <div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">node</span><span class="o">(</span><span class="s1">'master'</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">try</span> <span class="o">{</span>
         <span class="n">properties</span><span class="o">([</span>
             <span class="n">parameters</span><span class="o">([</span>
                 <span class="n">string</span><span class="o">(</span><span class="nl">name:</span> <span class="s1">'name'</span><span class="o">,</span> <span class="nl">defaultValue:</span> <span class="s1">'World'</span><span class="o">)</span>
             <span class="o">])</span>
         <span class="o">])</span>
-    
+
         <span class="n">stage</span><span class="o">(</span><span class="s1">'fetch @ slave4'</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">echo</span> <span class="s2">"Hello ${params.name}"</span>
 <span class="n">sh</span> <span class="nl">label:</span> <span class="s1">''</span><span class="o">,</span> <span class="nl">script:</span> <span class="s1">'echo Hello '</span>
@@ -185,49 +185,49 @@ stage('fetch @ master') {
     <span class="k">finally</span> <span class="o">{</span>
         <span class="n">echo</span> <span class="s2">"Done"</span>
     <span class="o">}</span>
-    
+
 <span class="o">}</span>
-</code></pre></div></div> <p>Scripted pipeline相比Declarative pipeline没有了DSL特性。它完全是一个Groovy脚本，可以调用在Jenkins沙盒内许可的任意的Api，也可以调用Jenkins插件引入的新功能；除此之外没有其它的限制。</p> <h2 id="几个特殊step及重要作用">几个特殊step及重要作用</h2> <ol> <li> <p>sh</p> <div class="language-groovy highlighter-rouge"> <div class="highlight"><pre class="highlight"><code> <span class="n">Runs</span> <span class="n">a</span> <span class="n">Bourne</span> <span class="n">shell</span> <span class="n">script</span><span class="o">,</span> <span class="n">typically</span> <span class="n">on</span> <span class="n">a</span> <span class="n">Unix</span> <span class="n">node</span><span class="o">.</span> <span class="n">Multiple</span> <span class="n">lines</span> <span class="n">are</span> <span class="n">accepted</span><span class="o">.</span>
+</code></pre></div></div> <p>Scripted pipeline相比Declarative pipeline没有了DSL特性。它完全是一个Groovy脚本，可以调用在Jenkins沙盒内许可的任意的Api，也可以调用Jenkins插件引入的新功能；除此之外没有其它的限制。</p> <h2 id="几个特殊step及重要作用">几个特殊step及重要作用</h2> <ol> <li>sh</li> </ol> <div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">Runs</span> <span class="n">a</span> <span class="n">Bourne</span> <span class="n">shell</span> <span class="n">script</span><span class="o">,</span> <span class="n">typically</span> <span class="n">on</span> <span class="n">a</span> <span class="n">Unix</span> <span class="n">node</span><span class="o">.</span> <span class="n">Multiple</span> <span class="n">lines</span> <span class="n">are</span> <span class="n">accepted</span><span class="o">.</span>
 
- <span class="n">An</span> <span class="n">interpreter</span> <span class="n">selector</span> <span class="n">may</span> <span class="n">be</span> <span class="n">used</span><span class="o">,</span> <span class="k">for</span> <span class="nl">example:</span> <span class="err">#</span><span class="o">!</span><span class="s">/usr/</span><span class="n">bin</span><span class="o">/</span><span class="n">perl</span>
+  <span class="n">An</span> <span class="n">interpreter</span> <span class="n">selector</span> <span class="n">may</span> <span class="n">be</span> <span class="n">used</span><span class="o">,</span> <span class="k">for</span> <span class="nl">example:</span> <span class="err">#</span><span class="o">!</span><span class="s">/usr/</span><span class="n">bin</span><span class="o">/</span><span class="n">perl</span>
 
- <span class="n">Otherwise</span> <span class="n">the</span> <span class="n">system</span> <span class="k">default</span> <span class="n">shell</span> <span class="n">will</span> <span class="n">be</span> <span class="n">run</span><span class="o">,</span> <span class="n">using</span> <span class="n">the</span> <span class="o">-</span><span class="n">xe</span> <span class="n">flags</span> <span class="o">(</span><span class="n">you</span> <span class="n">can</span> <span class="n">specify</span> <span class="n">set</span> <span class="o">+</span><span class="n">e</span> <span class="n">and</span><span class="o">/</span><span class="n">or</span> <span class="n">set</span> <span class="o">+</span><span class="n">x</span> <span class="n">to</span> <span class="n">disable</span> <span class="n">those</span><span class="o">).</span>
-</code></pre></div> </div> <p>作为pipeline与其它生态系统之间的一个桥梁。</p> <div class="language-groovy highlighter-rouge"> <div class="highlight"><pre class="highlight"><code> <span class="c1">// 更新Jenkins脚本代码；更新业务代码</span>
- <span class="kt">def</span> <span class="nf">fetchStages</span><span class="o">()</span> <span class="o">{</span>
-   <span class="kt">def</span> <span class="n">stages</span> <span class="o">=</span> <span class="o">[:]</span>
-   <span class="k">for</span> <span class="o">(</span><span class="n">aNode</span> <span class="k">in</span> <span class="n">avaliableNodes</span><span class="o">())</span> <span class="o">{</span>
-     <span class="kt">def</span> <span class="n">stageName</span> <span class="o">=</span> <span class="s2">"fetch @${aNode}"</span>
-     <span class="kt">def</span> <span class="n">nodeName</span> <span class="o">=</span> <span class="s2">"${aNode}"</span>
-     <span class="n">stages</span><span class="o">[</span><span class="n">stageName</span><span class="o">]</span> <span class="o">=</span> <span class="o">{</span> 
-       <span class="n">node</span><span class="o">(</span><span class="n">nodeName</span><span class="o">)</span> <span class="o">{</span>
-         <span class="n">stage</span><span class="o">(</span><span class="n">stageName</span><span class="o">)</span> <span class="o">{</span>
-           <span class="k">if</span> <span class="o">(</span><span class="n">nodeName</span> <span class="o">!=</span> <span class="s1">'master'</span> <span class="o">&amp;&amp;</span> <span class="n">env</span><span class="o">.</span><span class="na">Should_Do_RN_Build</span> <span class="o">==</span> <span class="s1">'false'</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//跳过RN打包</span>
-             <span class="n">print</span><span class="o">(</span><span class="s2">"Skipped due to SkipRNBuild"</span><span class="o">)</span>
-           <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-             <span class="n">checkout</span><span class="o">(</span><span class="n">scm</span><span class="o">)</span> <span class="c1">//更新Jenkins pipeline代码</span>
-             <span class="n">sh</span><span class="o">(</span><span class="nl">label:</span> <span class="s1">'Preparing repo'</span><span class="o">,</span> <span class="nl">script:</span> <span class="s2">"yarn fetch ${env.WORKSPACE}/source_code ${env.App_Club_Factory_Local_Branch} '' ${env.iOS_Local_Branch}"</span><span class="o">)</span> <span class="c1">//更新业务代码</span>
-           <span class="o">}</span>
-         <span class="o">}</span>
-       <span class="o">}</span>
-     <span class="o">}</span>
-   <span class="o">}</span>
-   <span class="n">stages</span><span class="o">[</span><span class="s1">'failFast'</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span>
-   <span class="k">return</span> <span class="n">stages</span>
- <span class="o">}</span>
-</code></pre></div> </div> </li> <li> <p>archiveArtifacts</p> <div class="language-groovy highlighter-rouge"> <div class="highlight"><pre class="highlight"><code> <span class="n">dir</span><span class="o">(</span><span class="s2">"source_code/app_club_factory/${RN_TARGET}/bundle"</span><span class="o">)</span> <span class="o">{</span>
-           <span class="n">archiveArtifacts</span> <span class="s2">"bundle.zip"</span>
-       <span class="o">}</span>
-</code></pre></div> </div> </li> <li> <p>dir　更换工作目录</p> <div class="language-groovy highlighter-rouge"> <div class="highlight"><pre class="highlight"><code> <span class="n">stage</span><span class="o">(</span><span class="s1">'build @ slave1'</span><span class="o">)</span> <span class="o">{</span>
-           <span class="n">node</span><span class="o">(</span><span class="s1">'slave1'</span><span class="o">)</span> <span class="o">{</span>
-             <span class="n">dir</span><span class="o">(</span><span class="s2">"source_code/app_club_factory"</span><span class="o">)</span> <span class="o">{</span>
-                 <span class="n">sh</span><span class="o">(</span><span class="nl">label:</span> <span class="s1">'... BUILDING ...'</span><span class="o">,</span>
-                         <span class="nl">script:</span> <span class="s2">""</span><span class="err">"</span>
-                 <span class="o">...</span>
-               <span class="o">)</span>
-               <span class="c1">// sh label: 'Build js bundle', script: "npm run ${RN_SCRIPT}"</span>
-             <span class="o">}</span>
-           <span class="o">}</span>
-         <span class="o">}</span> <span class="c1">// build @ slave1</span>
+  <span class="n">Otherwise</span> <span class="n">the</span> <span class="n">system</span> <span class="k">default</span> <span class="n">shell</span> <span class="n">will</span> <span class="n">be</span> <span class="n">run</span><span class="o">,</span> <span class="n">using</span> <span class="n">the</span> <span class="o">-</span><span class="n">xe</span> <span class="n">flags</span> <span class="o">(</span><span class="n">you</span> <span class="n">can</span> <span class="n">specify</span> <span class="n">set</span> <span class="o">+</span><span class="n">e</span> <span class="n">and</span><span class="o">/</span><span class="n">or</span> <span class="n">set</span> <span class="o">+</span><span class="n">x</span> <span class="n">to</span> <span class="n">disable</span> <span class="n">those</span><span class="o">).</span>
+</code></pre></div></div> <p>作为pipeline与其它生态系统之间的一个桥梁。</p> <div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// 更新Jenkins脚本代码；更新业务代码</span>
+  <span class="kt">def</span> <span class="nf">fetchStages</span><span class="o">()</span> <span class="o">{</span>
+      <span class="kt">def</span> <span class="n">stages</span> <span class="o">=</span> <span class="o">[:]</span>
+      <span class="k">for</span> <span class="o">(</span><span class="n">aNode</span> <span class="k">in</span> <span class="n">avaliableNodes</span><span class="o">())</span> <span class="o">{</span>
+      <span class="kt">def</span> <span class="n">stageName</span> <span class="o">=</span> <span class="s2">"fetch @${aNode}"</span>
+      <span class="kt">def</span> <span class="n">nodeName</span> <span class="o">=</span> <span class="s2">"${aNode}"</span>
+      <span class="n">stages</span><span class="o">[</span><span class="n">stageName</span><span class="o">]</span> <span class="o">=</span> <span class="o">{</span> 
+          <span class="n">node</span><span class="o">(</span><span class="n">nodeName</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">stage</span><span class="o">(</span><span class="n">stageName</span><span class="o">)</span> <span class="o">{</span>
+              <span class="k">if</span> <span class="o">(</span><span class="n">nodeName</span> <span class="o">!=</span> <span class="s1">'master'</span> <span class="o">&amp;&amp;</span> <span class="n">env</span><span class="o">.</span><span class="na">Should_Do_RN_Build</span> <span class="o">==</span> <span class="s1">'false'</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//跳过RN打包</span>
+              <span class="n">print</span><span class="o">(</span><span class="s2">"Skipped due to SkipRNBuild"</span><span class="o">)</span>
+              <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+              <span class="n">checkout</span><span class="o">(</span><span class="n">scm</span><span class="o">)</span> <span class="c1">//更新Jenkins pipeline代码</span>
+              <span class="n">sh</span><span class="o">(</span><span class="nl">label:</span> <span class="s1">'Preparing repo'</span><span class="o">,</span> <span class="nl">script:</span> <span class="s2">"yarn fetch ${env.WORKSPACE}/source_code ${env.App_Club_Factory_Local_Branch} '' ${env.iOS_Local_Branch}"</span><span class="o">)</span> <span class="c1">//更新业务代码</span>
+              <span class="o">}</span>
+          <span class="o">}</span>
+          <span class="o">}</span>
+      <span class="o">}</span>
+      <span class="o">}</span>
+      <span class="n">stages</span><span class="o">[</span><span class="s1">'failFast'</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span>
+      <span class="k">return</span> <span class="n">stages</span>
+  <span class="o">}</span>
+</code></pre></div></div> <ol> <li> <p>archiveArtifacts</p> <div class="language-groovy highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="n">dir</span><span class="o">(</span><span class="s2">"source_code/app_club_factory/${RN_TARGET}/bundle"</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">archiveArtifacts</span> <span class="s2">"bundle.zip"</span>
+      <span class="o">}</span>
+</code></pre></div> </div> </li> <li> <p>dir　更换工作目录</p> <div class="language-groovy highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="n">stage</span><span class="o">(</span><span class="s1">'build @ slave1'</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">node</span><span class="o">(</span><span class="s1">'slave1'</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">dir</span><span class="o">(</span><span class="s2">"source_code/app_club_factory"</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">sh</span><span class="o">(</span><span class="nl">label:</span> <span class="s1">'... BUILDING ...'</span><span class="o">,</span>
+                        <span class="nl">script:</span> <span class="s2">""</span><span class="err">"</span>
+                <span class="o">...</span>
+              <span class="o">)</span>
+              <span class="c1">// sh label: 'Build js bundle', script: "npm run ${RN_SCRIPT}"</span>
+            <span class="o">}</span>
+          <span class="o">}</span>
+        <span class="o">}</span> <span class="c1">// build @ slave1</span>
 </code></pre></div> </div> </li> </ol> <h2 id="jenkins插件">Jenkins插件</h2> <p>通过Web UI搜索、安装插件</p> <p><img src="https://user-images.githubusercontent.com/25997299/120635885-8aa75b80-c49f-11eb-9a34-cd06036497ad.png" alt="plugin"></p> <p>在Pipeline中使用插件</p> <div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">parameters</span> <span class="o">{</span>
           <span class="n">booleanParam</span> <span class="nl">defaultValue:</span> <span class="kc">true</span><span class="o">,</span> <span class="nl">description:</span> <span class="s1">'是否要跳过RN打包阶段;该选项在archive_type为AppStore时失效'</span><span class="o">,</span> <span class="nl">name:</span> <span class="s1">'SkipRNBuild'</span>
 
@@ -259,27 +259,27 @@ stage('fetch @ master') {
 |   +- org
 |       +- foo
 |           +- bar.json    <span class="c"># static helper data for org.foo.Bar</span>
-</code></pre></div></div> <ul> <li> <p>src</p> <p>包含Groovy源码，在运行时Jenkins会添加对应的classpath来保持类的正常识别；</p> </li> <li> <p>vars</p> <p>用来定义全局变量或扩展新的step供pipeline使用</p> <p>定义全局变量：</p> <div class="language-bash highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>  vars/log.groovy
-  def info<span class="o">(</span>message<span class="o">)</span> <span class="o">{</span>
-      <span class="nb">echo</span> <span class="s2">"INFO: </span><span class="k">${</span><span class="nv">message</span><span class="k">}</span><span class="s2">"</span>
-  <span class="o">}</span>
+</code></pre></div></div> <ul> <li> <p>src</p> <p>包含Groovy源码，在运行时Jenkins会添加对应的classpath来保持类的正常识别；</p> </li> <li> <p>vars</p> <p>用来定义全局变量或扩展新的step供pipeline使用</p> <p>定义全局变量：</p> <div class="language-bash highlighter-rouge"> <div class="highlight"><pre class="highlight"><code> vars/log.groovy
+ def info<span class="o">(</span>message<span class="o">)</span> <span class="o">{</span>
+     <span class="nb">echo</span> <span class="s2">"INFO: </span><span class="k">${</span><span class="nv">message</span><span class="k">}</span><span class="s2">"</span>
+ <span class="o">}</span>
 
-  def warning<span class="o">(</span>message<span class="o">)</span> <span class="o">{</span>
-      <span class="nb">echo</span> <span class="s2">"WARNING: </span><span class="k">${</span><span class="nv">message</span><span class="k">}</span><span class="s2">"</span>
-  <span class="o">}</span>
-</code></pre></div> </div> <p>使用全局变量，以单例形式</p> <div class="language-bash highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>  Jenkinsfile
-  @Library<span class="o">(</span><span class="s1">'utils'</span><span class="o">)</span> _
+ def warning<span class="o">(</span>message<span class="o">)</span> <span class="o">{</span>
+     <span class="nb">echo</span> <span class="s2">"WARNING: </span><span class="k">${</span><span class="nv">message</span><span class="k">}</span><span class="s2">"</span>
+ <span class="o">}</span>
+</code></pre></div> </div> <p>使用全局变量，以单例形式</p> <div class="language-bash highlighter-rouge"> <div class="highlight"><pre class="highlight"><code> Jenkinsfile
+ @Library<span class="o">(</span><span class="s1">'utils'</span><span class="o">)</span> _
 
-  log.info <span class="s1">'Starting'</span>
-  log.warning <span class="s1">'Nothing to do!'</span>
-</code></pre></div> </div> <p>自定义step</p> <div class="language-bash highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>  // vars/sayHello.groovy
-  def call<span class="o">(</span>String name <span class="o">=</span> <span class="s1">'human'</span><span class="o">)</span> <span class="o">{</span>
-      // Any valid steps can be called from this code, just like <span class="k">in </span>other
-      // Scripted Pipeline
-      <span class="nb">echo</span> <span class="s2">"Hello, </span><span class="k">${</span><span class="nv">name</span><span class="k">}</span><span class="s2">."</span>
-  <span class="o">}</span>
-</code></pre></div> </div> <p>使用自定义step</p> <div class="language-bash highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>  sayHello <span class="s1">'Joe'</span>
-  sayHello<span class="o">()</span> /<span class="k">*</span> invoke with default arguments <span class="k">*</span>/
+ log.info <span class="s1">'Starting'</span>
+ log.warning <span class="s1">'Nothing to do!'</span>
+</code></pre></div> </div> <p>自定义step</p> <div class="language-bash highlighter-rouge"> <div class="highlight"><pre class="highlight"><code> // vars/sayHello.groovy
+ def call<span class="o">(</span>String name <span class="o">=</span> <span class="s1">'human'</span><span class="o">)</span> <span class="o">{</span>
+     // Any valid steps can be called from this code, just like <span class="k">in </span>other
+     // Scripted Pipeline
+     <span class="nb">echo</span> <span class="s2">"Hello, </span><span class="k">${</span><span class="nv">name</span><span class="k">}</span><span class="s2">."</span>
+ <span class="o">}</span>
+</code></pre></div> </div> <p>使用自定义step</p> <div class="language-bash highlighter-rouge"> <div class="highlight"><pre class="highlight"><code> sayHello <span class="s1">'Joe'</span>
+ sayHello<span class="o">()</span> /<span class="k">*</span> invoke with default arguments <span class="k">*</span>/
 </code></pre></div> </div> </li> </ul> <p>SharedLibray存在的问题，不能引用三方库</p> <p>While possible, accessing third-party libraries using @Grab from trusted libraries has various issues and is not recommended. Instead of using @Grab, the recommended approach is to create a standalone executable in the programming language of your choice (using whatever third-party libraries you desire), install it on the Jenkins agents that your Pipelines use, and then invoke that executable in your Pipelines using the bat or sh step.</p> <h2 id="工具链">工具链</h2> <p>随着Pipeline变得越来越复杂，依赖Pipeline snippet generator来生成我们需要的指定显得越来越笨重，同时测试一小段代码需要运行整个Pipeline显得很低效，如果因为一个单词的书写错误我们不得不修改后再次去运行整个Pipeline，这种开发体验是很差劲的。</p> <p>解决以上问题我们可以从两方面着手：</p> <ol> <li> <p>寻找合适的IDE。</p> <p>我们可以从syntax highlighting、code completion、 go to definition、lint等几个方面来衡量。在Jenkins pipeline开发模式下主要语言是Pipeline DSL和Groovy</p> <ul> <li> <p>Pipeline DSL</p> <p>Jenkins提供了一个GDSL文件来描述该DSL供我们导入IDE来使用；</p> </li> </ul> </li> </ol> <p><img src="https://user-images.githubusercontent.com/25997299/120635944-9dba2b80-c49f-11eb-8138-922bf825da5b.png" alt="dsl"></p> <p><img src="https://user-images.githubusercontent.com/25997299/120635957-a1e64900-c49f-11eb-8e33-084edfbdce64.png" alt="demo"></p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- Groovy
 
     因为流行的[VS Code并不支持code completion](http://groovy-lang.org/ides.html)，看起来[IntelliJ IDEA](https://www.jetbrains.com/idea/)是一个不错的选择
