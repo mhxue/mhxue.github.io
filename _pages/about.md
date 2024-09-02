@@ -31,9 +31,9 @@ Minghao Xue | Male | 1990-08-25 | xueminghao2013@hotmail.com
 
 ## Work Experience
 
-1. iOS Senior Developer, 2022.4 ~ Today, A Top Crypto Exchange 
+1. iOS Senior Developer, 2022.4 ~ Today, A Top Crypto Exchange
 2. App developer, 2021.9 ~ 2022.4, Tencent Technology (Shanghai) Co., Ltd.
-3. Mobile developer, 2018.6 ~ 2021.8 Leader, Hangzhou Club Factory Co., Ltd. 
+3. Mobile developer, 2018.6 ~ 2021.8 Leader, Hangzhou Club Factory Co., Ltd.
 4. iOS Senior Developer, 2017.4 ~ 2018.6, Shanghai Bilibili Technology Co., Ltd.
 5. iOS core developer, 2015.3 ~ 2017.4, Shanghai Jietu Software Co., Ltd.
 6. iOS developer, 2013.5 ~ 2014.12, Shanghai Pactera Software Co., Ltd.

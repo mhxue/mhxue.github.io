@@ -4,7 +4,7 @@
 
 title: blank # the website title (if blank, full name will be used instead)
 first_name: Minghao
-middle_name:  
+middle_name:
 last_name: Xue
 email: xueminghao2013@hotmail.com
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
@@ -183,7 +183,7 @@ disqus_shortname: al-folio # put your disqus shortname
 # newsletter:
 #   enabled: false
 #   endpoint: # your loops endpoint (e.g., https://app.loops.so/api/newsletter-form/YOUR-ENDPOINT)
-  # https://loops.so/docs/forms/custom-form
+# https://loops.so/docs/forms/custom-form
 
 # -----------------------------------------------------------------------------
 # Collections
