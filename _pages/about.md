@@ -18,16 +18,16 @@ social: false # includes social icons at the bottom of the page
 
 ## Basic Info
 
-Minghao Xue | Male | 1990-08-25 | xueminghao2013@hotmail.com
+Minghao Xue | Male | 1990-08-25｜(+86)19157675004 | xueminghao2013@hotmail.com
 
 ## Professional Skill
 
-1. Professional skills on iOS platform: Rich experiences on architecture, design, development, and performance optimization; Experienced from the frame based layout, Auto Resizing layout to AutoLayout, from UIKit framework to SwiftUI, from OC call backs to Swift structured concurrency, from MVC design patterns, ReactiveCocoa based MVVM to Swift based combine, etc.
-2. Professional skills on cross-platform solutions: Full and deep experiences on usage of React Native, integrating to existing app, customizing components, etc; Experiences on Flutter add-to-app mode, abilities to dev flutter based apps alone.
-3. Professional skills on Android platform: Experiences on MVVM/MVI based architecture; XML based layout; view binding & data binding;
-4. Generic and deep perspective on frond end technologies: strong interests on iOS, android, RN/Flutter, and web platforms, good knowledges of their choices on same issues; deep understanding on the render process, from layout to compose until GPU render.
-5. Professional skills on languages like Object-C/Swift, JavaScript/TypeScript, C/C++, Kotlin, Dart, etc.
-6. Rich experiences on project and team management.
+1. Expert-level iOS platform skills: Extensive experience in architecture, design, development, and performance optimization. Skilled in transitioning from frame-based layouts and Auto Resizing to AutoLayout, from the UIKit framework to SwiftUI, from Objective-C callbacks to Swift structured concurrency, and from MVC design patterns and ReactiveCocoa-based MVVM to Swift-based Combine.
+2. Professional cross-platform solution skills: Extensive experience with React Native, including app integration and component customization. Proficient in Flutter's add-to-app mode, with the ability to independently develop Flutter-based apps.
+3. Professional Android platform skills: Experience with MVVM/MVI-based architecture, XML-based layout, view binding, and data binding.
+4. Broad and deep understanding of front-end technologies: strong interest in iOS, Android, RN/Flutter, and web platforms; well-versed in their approaches to similar challenges; profound grasp of the rendering process, from layout to composition to GPU rendering.
+5. Proficient in languages such as Objective-C/Swift, JavaScript/TypeScript, C/C++, Kotlin, Dart, etc.
+6. Extensive experience in project and team management.
 
 ## Work Experience
 
@@ -43,27 +43,27 @@ Minghao Xue | Male | 1990-08-25 | xueminghao2013@hotmail.com
 
 ### A Top Crypto Exchange 2022.4 ～ Today
 
-A project mainly targeting on US market which provides services of buying, selling, and trading of cryptocurrencies. Responsibilities:
+A project primarily targeting the US market, providing services for buying, selling, and trading cryptocurrencies. Responsibilities:
 
-1. Experiment and practice on new technologies: migrating to SwiftUI, combine, mixture with UIKit, component based development, etc.
-2. App architecture design, like practice of MVVM; Core component develop, like Navigator.
-3. Development of core business modules: Home, Market, OCBS, Trade, etc.
+1. Experimenting with and practicing new technologies: migrating to SwiftUI, integrating Combine with UIKit, and developing component-based architectures.
+2. App architecture design, such as practicing MVVM, and core component development, like Navigator.
+3. Development of core business modules, including Home, Market, OCBS, and Trade.
 
 ### Xiao e pinpin 2021.9~2022.4
 
-A project focusing on social e-commerce. Responsibilities:
+A project centered on social e-commerce. Responsibilities:
 
-1. App architecture optimize and code quality improve.
-2. Iterations on business trade flow; Promotion support for big events.
+1. Optimize app architecture and improve code quality.
+2. Iterating on business trade flow and providing promotional support for major events.
 3. New technology research like WebRTC.
 
 ### Wholee 2020.7 ~ 2021.8
 
-Wholee is a cross-border membership-based e-commerce product. Due to the complexity and variability of e-commerce business, there is a special need for rapid business deployment. In a comparative study of mobile technologies in recent years, we adopted the technology stack of ReactNative + Web + Native. The project, which consists of 8 team members, is led by me as the project manager. Responsibilities include:
+Wholee is a cross-border, membership-based e-commerce product. Given the complexity and variability of the e-commerce industry, rapid business deployment is crucial. After a comparative study of recent mobile technologies, we chose the technology stack of ReactNative, Web, and Native. I lead the project as the manager, overseeing a team of eight. Responsibilities include:
 
 1. Team management and personnel training.
-2. Building project infrastructure such as setting up git repositories, managing git workflows, building application architecture, and creating basic modules.
-3. Solving technical challenges and performance issues as a last resort. Such as complex page layout, interactions, and performance of long lists.
+2. Building project infrastructure, including setting up Git repositories, managing Git workflows, designing application architecture, and developing basic modules.
+3. Addressing technical challenges and performance issues as a last resort, such as complex page layouts, interactions, and performance of long lists.
 4. Designing and developing core modules, such as developing and maintaining list layout frameworks, customizing higher-performance native video components for RN, and module splitting.
 
 ### ClubFactory 2018.6 ~ 2020.6
