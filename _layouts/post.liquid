@@ -97,3 +97,15 @@ layout: default
     {% include giscus.liquid %}
   {% endif %}
 </div>
+
+{% if page.react_app %}
+  {% assign react_app = page.react_app %}
+  {% assign js_file_path = react_app.js %}
+  {% assign css_file_path = react_app.css %}
+  {% if js_file_path %}
+    <script src="{{ js_file_path | prepend: '/assets/app/' }}"></script>
+  {% endif %}
+  {% if css_file_path %}
+    <link rel="stylesheet" href="{{ css_file_path | prepend: '/assets/app/' }}">
+  {% endif %}
+{% endif %}
